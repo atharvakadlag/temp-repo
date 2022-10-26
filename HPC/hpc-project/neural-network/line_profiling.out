@@ -1,0 +1,10 @@
+File 'neural_network.cpp'
+Lines executed:100.00% of 41
+Branches executed:90.32% of 62
+Taken at least once:62.90% of 62
+Calls executed:87.21% of 86
+Creating 'neural_network.cpp.gcov'
+
+... // other unmodifiable source files
+
+Lines executed:88.00% of 350

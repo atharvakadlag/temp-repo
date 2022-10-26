@@ -1,0 +1,28 @@
+2
+total_time: 0.000138
+4
+total_time: 0.000124
+8
+total_time: 0.000138
+16
+total_time: 0.000348
+32
+total_time: 0.000464
+64
+total_time: 0.000837
+128
+total_time: 0.001592
+256
+total_time: 0.003401
+512
+total_time: 0.006012
+1024
+total_time: 0.011594
+2048
+total_time: 0.023101
+4096
+total_time: 0.046387
+8192
+total_time: 0.093546
+16384
+total_time: 0.184309

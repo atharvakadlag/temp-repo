@@ -1,0 +1,13 @@
+{
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex"
+    ],
+    "files.associations": {
+        "iostream": "cpp",
+        "stdio.h": "c"
+    }
+}

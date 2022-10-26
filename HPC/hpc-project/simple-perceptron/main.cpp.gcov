@@ -1,0 +1,552 @@
+        -:    0:Source:main.cpp
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include <vector> 
+        -:    3:#include <string>
+        -:    4:#include <algorithm>
+        -:    5:#define RESET   "\033[0m"
+        -:    6:#define RED     "\033[31m"      /* Red */
+        -:    7:#define GREEN   "\033[32m"      /* Green */
+        -:    8:
+        -:    9:using namespace std;
+        -:   10:
+function _Z8vectostrB5cxx11St6vectorIdSaIdEE called 10002 returned 100% blocks executed 74%
+    10002:   11:string vectostr(vector<double> vec)
+        -:   12:{
+    10002:   13:    string output = "{";
+call    0 returned 10002
+call    1 returned 10002
+branch  2 taken 10002 (fallthrough)
+branch  3 taken 0 (throw)
+    10002:   14:    int len = vec.size();
+call    0 returned 10002
+   500100:   15:    for (int i = 0; i < len - 1; i++)
+branch  0 taken 490098 (fallthrough)
+branch  1 taken 10002
+        -:   16:    {
+        -:   17:        char elem_i[20];
+   490098:   18:        snprintf(elem_i, 20, "%.2f, ", vec[i]);
+call    0 returned 490098
+   490098:   19:        output += elem_i;
+call    0 returned 490098
+branch  1 taken 490098 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   20:    }
+        -:   21:    char last_elem[18];
+    10002:   22:    snprintf(last_elem, 18, "%.2f", vec[vec.size() - 1]);
+call    0 returned 10002
+call    1 returned 10002
+    10002:   23:    output += last_elem;
+call    0 returned 10002
+branch  1 taken 10002 (fallthrough)
+branch  2 taken 0 (throw)
+    10002:   24:    output += '}';
+call    0 returned 10002
+branch  1 taken 10002 (fallthrough)
+branch  2 taken 0 (throw)
+    20004:   25:    return output;
+        -:   26:}
+        -:   27:
+function _Z3dotRSt6vectorIdSaIdEES2_ called 10020000 returned 100% blocks executed 85%
+ 10020000:   28:double dot(vector<double>& vec1, vector<double>& vec2)
+        -:   29:{
+ 10020000:   30:    if (vec1.size() != vec2.size())
+call    0 returned 10020000
+call    1 returned 10020000
+branch  2 taken 0 (fallthrough)
+branch  3 taken 10020000
+        -:   31:    {
+    #####:   32:        throw("Cannot take dot product of vectors of unequal lengths");
+call    0 never executed
+call    1 never executed
+        -:   33:    }
+ 10020000:   34:    double total = 0;
+511020000:   35:    for (int i = 0; i < vec1.size(); i++)
+call    0 returned 511020000
+branch  1 taken 501000000 (fallthrough)
+branch  2 taken 10020000
+        -:   36:    {
+501000000:   37:        total += vec1[i] * vec2[i];
+call    0 returned 501000000
+call    1 returned 501000000
+        -:   38:    }
+ 10020000:   39:    return total;
+        -:   40:}
+        -:   41:
+        -:   42:class Sample
+        -:   43:{
+        -:   44:private:
+        -:   45:    vector<double> coords;
+        -:   46:    bool is_type_A;
+        -:   47:public:
+function _ZN6SampleC2ERSt6vectorIdSaIdEEb called 10000 returned 100% blocks executed 80%
+    10000:   48:    Sample(vector<double>& coords, bool is_type_A)
+    10000:   49:    {
+call    0 returned 10000
+call    1 never executed
+    10000:   50:        this -> coords = coords;
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+    10000:   51:        this -> is_type_A = is_type_A;
+    10000:   52:    }
+function _ZN6Sample5tostrB5cxx11Ev called 10000 returned 100% blocks executed 55%
+    10000:   53:    string tostr() 
+        -:   54:    {
+    10000:   55:    string output = "Sample(";
+call    0 returned 10000
+call    1 returned 10000
+branch  2 taken 10000 (fallthrough)
+branch  3 taken 0 (throw)
+call    4 never executed
+    10000:   56:    output += vectostr(coords);
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 10000
+branch  7 taken 10000 (fallthrough)
+branch  8 taken 0 (throw)
+call    9 returned 10000
+call   10 returned 10000
+call   11 never executed
+call   12 never executed
+    10000:   57:    output += ", is_type_A: ";
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+    10000:   58:    output += to_string(this -> is_type_A);
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 10000
+call    7 never executed
+    10000:   59:    output += ')';
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+    10000:   60:    return output;
+        -:   61:    }
+function _ZlsRSoR6Sample called 10000 returned 100% blocks executed 75%
+    10000:   62:    friend ostream& operator<<(ostream& os, Sample& s)
+        -:   63:    {
+    10000:   64:        return os << s.tostr();
+call    0 returned 10000
+call    1 returned 10000
+branch  2 taken 10000 (fallthrough)
+branch  3 taken 0 (throw)
+call    4 returned 10000
+call    5 never executed
+        -:   65:    }
+function _ZN6Sample10get_coordsEv called 20020001 returned 100% blocks executed 100%
+ 20020001:   66:    vector<double> get_coords() {return this -> coords;}
+call    0 returned 20020001
+function _ZN6Sample13get_is_type_AEv called 10010000 returned 100% blocks executed 100%
+ 10010000:   67:    bool get_is_type_A() {return this -> is_type_A;}
+        -:   68:};
+        -:   69:
+        -:   70:class Perceptron
+        -:   71:{
+        -:   72:private:
+        -:   73:    vector<Sample> traindata;
+        -:   74:    vector<double> weights;
+        -:   75:    double bias;
+        -:   76:    double lr;  // learning rate
+function _ZN10Perceptron18initialize_weightsEv called 1 returned 100% blocks executed 100%
+        1:   77:    void initialize_weights()
+        -:   78:    {
+        1:   79:        weights = {};
+call    0 returned 1
+        1:   80:        int n_coords = traindata[0].get_coords().size();
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+       51:   81:        for (int i = 0; i < n_coords; i++)
+branch  0 taken 50 (fallthrough)
+branch  1 taken 1
+        -:   82:        {
+       50:   83:            weights.push_back(1);
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   84:        }
+        1:   85:    }
+function _ZN10Perceptron15initialize_biasEv called 1 returned 100% blocks executed 100%
+        1:   86:    void initialize_bias()
+        -:   87:    {
+        1:   88:        bias = 0;
+        1:   89:    }
+function _ZN10Perceptron34calculate_weight_change_multiplierER6Sample called 10000000 returned 100% blocks executed 100%
+ 10000000:   90:    double calculate_weight_change_multiplier(Sample& sample)
+        -:   91:    {
+ 10000000:   92:        bool predicted_is_type_A = predict_is_type_A(sample);
+call    0 returned 10000000
+ 10000000:   93:        bool actual_is_type_A = sample.get_is_type_A();
+call    0 returned 10000000
+ 10000000:   94:        int multiplier = actual_is_type_A - predicted_is_type_A;
+        -:   95:        // multiplier: 0 if prediction correct, 
+        -:   96:        //            -1 if prediction too big,
+        -:   97:        //             1 if prediction too small.
+ 10000000:   98:        return multiplier * lr;
+        -:   99:    }
+function _ZN10Perceptron23update_weights_and_biasER6Sample called 10000000 returned 100% blocks executed 100%
+ 10000000:  100:    void update_weights_and_bias(Sample& sample)
+        -:  101:    {
+ 10000000:  102:        double weight_change_multiplier = calculate_weight_change_multiplier(
+call    0 returned 10000000
+branch  1 taken 10000000 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  103:            sample);
+ 10000000:  104:        vector<double> coords = sample.get_coords();
+call    0 returned 10000000
+branch  1 taken 10000000 (fallthrough)
+branch  2 taken 0 (throw)
+510000000:  105:        for (int i = 0; i < coords.size(); i++)
+call    0 returned 510000000
+branch  1 taken 500000000 (fallthrough)
+branch  2 taken 10000000
+        -:  106:        {
+500000000:  107:            weights[i] += coords[i] * weight_change_multiplier;
+call    0 returned 500000000
+call    1 returned 500000000
+        -:  108:        }
+ 10000000:  109:        bias += weight_change_multiplier;
+call    0 returned 10000000
+ 10000000:  110:    }
+function _ZN10Perceptron11train_epochEv called 1000 returned 100% blocks executed 100%
+     1000:  111:    void train_epoch()
+        -:  112:    {
+ 10001000:  113:        for (int i = 0; i < traindata.size(); i++) {
+call    0 returned 10001000
+branch  1 taken 10000000 (fallthrough)
+branch  2 taken 1000
+ 10000000:  114:            update_weights_and_bias(traindata[i]);
+call    0 returned 10000000
+call    1 returned 10000000
+        -:  115:        }
+     1000:  116:    }
+        -:  117:public:
+function _ZN10PerceptronC2ERdRSt6vectorI6SampleSaIS2_EE called 1 returned 100% blocks executed 70%
+        1:  118:    Perceptron(double& lr, vector<Sample>& traindata)
+        1:  119:    {
+call    0 returned 1
+call    1 returned 1
+call    2 never executed
+call    3 never executed
+        1:  120:        this -> lr = lr;
+        1:  121:        this -> traindata = traindata;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  122:        initialize_weights();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  123:        initialize_bias();
+call    0 returned 1
+        1:  124:    }
+function _ZN10Perceptron5tostrB5cxx11Ev called 2 returned 100% blocks executed 61%
+        2:  125:    string tostr() {
+        2:  126:        string output = "Perceptron(weights: ";
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:  127:        output += vectostr(weights);
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 2
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0 (throw)
+call    9 returned 2
+call   10 returned 2
+call   11 never executed
+call   12 never executed
+        2:  128:        output += ", bias: ";
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  129:        char biasstring[20];
+        2:  130:        snprintf(biasstring, 20, "%.2f", bias);
+        2:  131:        output += biasstring;
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  132:        output += ", lr: ";
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  133:        char lrstring[20];
+        2:  134:        snprintf(lrstring, 20, "%.2f", lr);
+        2:  135:        output += lrstring;
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  136:        output += ')';
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        4:  137:        return output;
+        -:  138:    }
+function _ZlsRSoR10Perceptron called 2 returned 100% blocks executed 75%
+        2:  139:    friend ostream& operator<<(ostream& os, Perceptron& p)
+        -:  140:    {
+        2:  141:        return os << p.tostr();
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+call    4 returned 2
+call    5 never executed
+        -:  142:    }
+function _ZN10Perceptron17predict_is_type_AER6Sample called 10020000 returned 100% blocks executed 75%
+ 10020000:  143:    bool predict_is_type_A(Sample& sample)
+        -:  144:    {
+ 10020000:  145:        vector<double> coords = sample.get_coords();
+call    0 returned 10020000
+branch  1 taken 10020000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 never executed
+ 20040000:  146:        return dot(weights, coords) + bias > 0;
+call    0 returned 10020000
+branch  1 taken 10020000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10020000
+        -:  147:    }
+function _ZN10Perceptron5trainEib called 1 returned 100% blocks executed 75%
+        1:  148:    void train(int n_epochs = 20, bool reset_params = false)
+        -:  149:    {
+        1:  150:        if (reset_params)
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+        -:  151:        {
+    #####:  152:            initialize_bias();
+call    0 never executed
+    #####:  153:            initialize_weights();
+call    0 never executed
+        -:  154:        }
+     1001:  155:        for (int i = 0; i < n_epochs; i++)
+branch  0 taken 1000 (fallthrough)
+branch  1 taken 1
+        -:  156:        {
+     1000:  157:            train_epoch();
+call    0 returned 1000
+        -:  158:        }
+        1:  159:    }
+        -:  160:};
+        -:  161:
+function _Z10get_samplei called 0 returned 0% blocks executed 0%
+    #####:  162:Sample get_sample(int dimensions)
+        -:  163:{
+    #####:  164:    vector<double> coords = {};
+call    0 never executed
+call    1 never executed
+call    2 never executed
+    #####:  165:    for (int i = 0; i < dimensions; i++)
+branch  0 never executed
+branch  1 never executed
+        -:  166:    {
+    #####:  167:        printf("x_%d? ", i);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  168:        double x_i;
+    #####:  169:        scanf("%lf", &x_i);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  170:        coords.push_back(x_i);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  171:    }
+        -:  172:    bool is_type_A;
+    #####:  173:    cout << "is_type_A? ";
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  174:    cin >> is_type_A;
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  175:    return Sample(coords, is_type_A);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  176:}
+        -:  177:
+function main called 1 returned 100% blocks executed 77%
+        1:  178:int main()
+        -:  179:{
+        -:  180:    int n_samples;
+        -:  181:    int n_dims;
+        1:  182:    cout << "How many samples? ";
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  183:    // scanf("%d", &n_samples);
+        1:  184:    n_samples = 10000;
+        1:  185:    cout << "How many dimensions? ";
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  186:    n_dims = 500;
+        -:  187:    // scanf("%d", &n_dims);
+        2:  188:    vector<Sample> traindata = {};
+call    0 returned 1
+call    1 returned 1
+call    2 never executed
+    10001:  189:    for (int i = 0; i < n_samples; i++)
+branch  0 taken 10000 (fallthrough)
+branch  1 taken 1
+        -:  190:    {
+    10000:  191:        printf("Sample %d\n", i);
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+    10000:  192:        vector<double> coords = {};
+call    0 returned 10000
+call    1 never executed
+   510000:  193:        for(int i = 0; i < 50; i++) {
+branch  0 taken 500000 (fallthrough)
+branch  1 taken 10000
+   500000:  194:            coords.push_back(float(rand())/float((RAND_MAX))*9999.0);
+call    0 returned 500000
+call    1 returned 500000
+branch  2 taken 500000 (fallthrough)
+branch  3 taken 0 (throw)
+        -:  195:        }
+        -:  196:        bool is_type_A;
+    10000:  197:        is_type_A = rand() > 1 ? false : true;
+call    0 returned 10000
+    10000:  198:        traindata.push_back(Sample(coords, is_type_A));
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 10000
+call    7 returned 10000
+call    8 never executed
+        -:  199:    }
+        -:  200:    double lr;
+        1:  201:    cout << "What is the learning rate? ";
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  202:    // scanf("%lf", &lr);
+        1:  203:    lr = 0.1;
+        1:  204:    Perceptron p = Perceptron(lr, traindata);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 never executed
+        -:  205:    int n_epochs;
+        1:  206:    cout << "How many epochs? ";
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  207:    // scanf("%d", &n_epochs);
+        1:  208:    n_epochs = 1000;
+        1:  209:    cout << "Before training: " << p << endl;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  210:    p.train(n_epochs);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  211:    cout << ">After training: " << p << endl;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+    10001:  212:    for (Sample sample_i : traindata)
+call    0 returned 1
+call    1 returned 1
+call    2 returned 10001
+branch  3 taken 10000 (fallthrough)
+branch  4 taken 1
+call    5 returned 10000
+call    6 returned 10000
+branch  7 taken 10000 (fallthrough)
+branch  8 taken 0 (throw)
+call    9 returned 10000
+call   10 returned 10000
+call   11 never executed
+        -:  213:    {
+    10000:  214:        cout << "Predicted " << p.predict_is_type_A(sample_i) <<  " for " << sample_i;
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 10000
+branch  7 taken 10000 (fallthrough)
+branch  8 taken 0 (throw)
+call    9 returned 10000
+branch 10 taken 10000 (fallthrough)
+branch 11 taken 0 (throw)
+call   12 returned 10000
+branch 13 taken 10000 (fallthrough)
+branch 14 taken 0 (throw)
+    10000:  215:        if (p.predict_is_type_A(sample_i) == sample_i.get_is_type_A())
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0
+        -:  216:        {
+    10000:  217:            cout << GREEN << " ✓";
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0 (throw)
+        -:  218:        } else {
+    #####:  219:           cout << RED << " x"; 
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:  220:        }
+    10000:  221:        cout << RESET << endl;
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 10000
+branch  4 taken 10000 (fallthrough)
+branch  5 taken 0 (throw)
+        -:  222:    }
+        1:  223:    return 0;
+call    0 returned 1
+        -:  224:}
