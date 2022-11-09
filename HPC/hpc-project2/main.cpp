@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <omp.h>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ vector<int> loss;
 float mean_squared_error(vector<float> y, vector<float> y_pred) {
     int n = y.size();
     float sum = 0;
+    #pragma omp parallel for shared(sum, y, y_pred)
     for (int i = 0; i < n; i++) {
         sum += pow((y[i] - y_pred[i]), 2);
     }
@@ -39,11 +41,12 @@ int main() {
     }
     int lenx = x.size();
     int lenw = w.size();
-    cout << w[0].size() << endl;
-    cout << lenx << endl;
+    // cout << w[0].size() << endl;
+    // cout << lenx << endl;
     vector<float> layer2;
     vector<float> layer1 = {1};
     int iter;
+    double start_time = omp_get_wtime();
     for (iter = 0; iter < 5000; iter++) {
         layer1 = {1};
         layer2 = {};
@@ -71,11 +74,14 @@ int main() {
         vector<vector<float>> delta = {{del11, del21},
                                        {del12, del22}};
 
+        #pragma omp parallel for shared(w, delta, x)
         for (int i = 0; i < lenw; i++) {
             for (int j = 0; j < (int)lenw / 2; j++) {
                 w[i][j] -= 0.5 * (delta[0][i] * x[j]);
             }
         }
+
+        #pragma omp parallel for shared(w, delta, layer1)
         for (int i = 0; i < lenw; i++) {
             for (int j = 0; j < (int)lenw / 2; j++) {
                 w[i][3 + j] -= 0.5 * (delta[1][i] * layer1[j]);
@@ -84,6 +90,8 @@ int main() {
         float val = mean_squared_error(_true, layer2);
         loss.push_back(val);
     }
+    double end_time = omp_get_wtime();
+    cout << end_time-start_time << endl;
     // cout << "**********************************\n";
     // cout << "Weight Vector after iteration: " << iter + 1 << "\n";
     // for (auto e: w) {
