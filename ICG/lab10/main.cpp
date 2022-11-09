@@ -2,6 +2,12 @@
 #include <GL/glut.h>  
 #define HEIGHT 720
 #define WIDTH 720
+#include "circle_draw.hpp"
+// use mcd to draw circles for the tree
+
+int randint(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
 
 void grass () {
     glColor3f(0.11, 0.38, 0.16);
@@ -27,11 +33,10 @@ void tree (float scale=1, int startx=10, int starty=200) {
     glVertex2d(startx+width_bottom, starty);
     glEnd();
     /* Draw tree bottom */
-    glBegin(GL_POLYGON);
-    glVertex2d(width_bottom/2+startx, starty+height);
-    glVertex2d(width_bottom/2+startx-10, starty+height+10);
-    glVertex2d(width_bottom/2+startx, starty+height-10);
-    glEnd();
+    glColor3f(0.44, 0.71, 0.22);
+    srand(time(0));
+    
+
     glFlush();
 }
 

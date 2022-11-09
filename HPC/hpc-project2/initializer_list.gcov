@@ -1,10 +1,10 @@
-        -:    0:Source:/usr/include/c++/12.1.0/initializer_list
-        -:    0:Graph:neural_network.gcno
-        -:    0:Data:neural_network.gcda
+        -:    0:Source:/usr/include/c++/9/initializer_list
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
         -:    0:Runs:1
         -:    1:// std::initializer_list support -*- C++ -*-
         -:    2:
-        -:    3:// Copyright (C) 2008-2022 Free Software Foundation, Inc.
+        -:    3:// Copyright (C) 2008-2019 Free Software Foundation, Inc.
         -:    4://
         -:    5:// This file is part of GCC.
         -:    6://
@@ -72,45 +72,45 @@
         -:   68:
         -:   69:      // Number of elements.
         -:   70:      constexpr size_type
-     5006:   71:      size() const noexcept { return _M_len; }
+    25005:   71:      size() const noexcept { return _M_len; }
 ------------------
 _ZNKSt16initializer_listISt6vectorIfSaIfEEE4sizeEv:
-function _ZNKSt16initializer_listISt6vectorIfSaIfEEE4sizeEv called 1001 returned 100% blocks executed 100%
-     1001:   71:      size() const noexcept { return _M_len; }
+function _ZNKSt16initializer_listISt6vectorIfSaIfEEE4sizeEv called 5000 returned 100% blocks executed 100%
+     5000:   71:      size() const noexcept { return _M_len; }
 ------------------
 _ZNKSt16initializer_listIfE4sizeEv:
-function _ZNKSt16initializer_listIfE4sizeEv called 4005 returned 100% blocks executed 100%
-     4005:   71:      size() const noexcept { return _M_len; }
+function _ZNKSt16initializer_listIfE4sizeEv called 20005 returned 100% blocks executed 100%
+    20005:   71:      size() const noexcept { return _M_len; }
 ------------------
         -:   72:
         -:   73:      // First element.
         -:   74:      constexpr const_iterator
-    10012:   75:      begin() const noexcept { return _M_array; }
+    50010:   75:      begin() const noexcept { return _M_array; }
 ------------------
 _ZNKSt16initializer_listISt6vectorIfSaIfEEE5beginEv:
-function _ZNKSt16initializer_listISt6vectorIfSaIfEEE5beginEv called 2002 returned 100% blocks executed 100%
-     2002:   75:      begin() const noexcept { return _M_array; }
+function _ZNKSt16initializer_listISt6vectorIfSaIfEEE5beginEv called 10000 returned 100% blocks executed 100%
+    10000:   75:      begin() const noexcept { return _M_array; }
 ------------------
 _ZNKSt16initializer_listIfE5beginEv:
-function _ZNKSt16initializer_listIfE5beginEv called 8010 returned 100% blocks executed 100%
-     8010:   75:      begin() const noexcept { return _M_array; }
+function _ZNKSt16initializer_listIfE5beginEv called 40010 returned 100% blocks executed 100%
+    40010:   75:      begin() const noexcept { return _M_array; }
 ------------------
         -:   76:
         -:   77:      // One past the last element.
         -:   78:      constexpr const_iterator
-     5006:   79:      end() const noexcept { return begin() + size(); }
+    25005:   79:      end() const noexcept { return begin() + size(); }
 ------------------
 _ZNKSt16initializer_listISt6vectorIfSaIfEEE3endEv:
-function _ZNKSt16initializer_listISt6vectorIfSaIfEEE3endEv called 1001 returned 100% blocks executed 100%
-     1001:   79:      end() const noexcept { return begin() + size(); }
-call    0 returned 1001
-call    1 returned 1001
+function _ZNKSt16initializer_listISt6vectorIfSaIfEEE3endEv called 5000 returned 100% blocks executed 100%
+     5000:   79:      end() const noexcept { return begin() + size(); }
+call    0 returned 5000
+call    1 returned 5000
 ------------------
 _ZNKSt16initializer_listIfE3endEv:
-function _ZNKSt16initializer_listIfE3endEv called 4005 returned 100% blocks executed 100%
-     4005:   79:      end() const noexcept { return begin() + size(); }
-call    0 returned 4005
-call    1 returned 4005
+function _ZNKSt16initializer_listIfE3endEv called 20005 returned 100% blocks executed 100%
+    20005:   79:      end() const noexcept { return begin() + size(); }
+call    0 returned 20005
+call    1 returned 20005
 ------------------
         -:   80:    };
         -:   81:
@@ -118,27 +118,25 @@ call    1 returned 4005
         -:   83:   *  @brief  Return an iterator pointing to the first element of
         -:   84:   *          the initializer_list.
         -:   85:   *  @param  __ils  Initializer list.
-        -:   86:   *  @relates initializer_list
-        -:   87:   */
-        -:   88:  template<class _Tp>
-        -:   89:    constexpr const _Tp*
-        -:   90:    begin(initializer_list<_Tp> __ils) noexcept
-        -:   91:    { return __ils.begin(); }
-        -:   92:
-        -:   93:  /**
-        -:   94:   *  @brief  Return an iterator pointing to one past the last element
-        -:   95:   *          of the initializer_list.
-        -:   96:   *  @param  __ils  Initializer list.
-        -:   97:   *  @relates initializer_list
-        -:   98:   */
-        -:   99:  template<class _Tp>
-        -:  100:    constexpr const _Tp*
-        -:  101:    end(initializer_list<_Tp> __ils) noexcept
-        -:  102:    { return __ils.end(); }
-        -:  103:}
+        -:   86:   */
+        -:   87:  template<class _Tp>
+        -:   88:    constexpr const _Tp*
+        -:   89:    begin(initializer_list<_Tp> __ils) noexcept
+        -:   90:    { return __ils.begin(); }
+        -:   91:
+        -:   92:  /**
+        -:   93:   *  @brief  Return an iterator pointing to one past the last element
+        -:   94:   *          of the initializer_list.
+        -:   95:   *  @param  __ils  Initializer list.
+        -:   96:   */
+        -:   97:  template<class _Tp>
+        -:   98:    constexpr const _Tp*
+        -:   99:    end(initializer_list<_Tp> __ils) noexcept
+        -:  100:    { return __ils.end(); }
+        -:  101:}
+        -:  102:
+        -:  103:#pragma GCC visibility pop
         -:  104:
-        -:  105:#pragma GCC visibility pop
+        -:  105:#endif // C++11
         -:  106:
-        -:  107:#endif // C++11
-        -:  108:
-        -:  109:#endif // _INITIALIZER_LIST
+        -:  107:#endif // _INITIALIZER_LIST

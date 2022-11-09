@@ -1,10 +1,10 @@
-        -:    0:Source:/usr/include/c++/12.1.0/cmath
-        -:    0:Graph:neural_network.gcno
-        -:    0:Data:neural_network.gcda
+        -:    0:Source:/usr/include/c++/9/cmath
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
         -:    0:Runs:1
         -:    1:// -*- C++ -*- C forwarding header.
         -:    2:
-        -:    3:// Copyright (C) 1997-2022 Free Software Foundation, Inc.
+        -:    3:// Copyright (C) 1997-2019 Free Software Foundation, Inc.
         -:    4://
         -:    5:// This file is part of the GNU ISO C++ Library.  This library is free
         -:    6:// software; you can redistribute it and/or modify it under the
@@ -223,9 +223,9 @@
         -:  219:
         -:  220:#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
         -:  221:  inline _GLIBCXX_CONSTEXPR float
-function _ZSt3expf called 4000 returned 100% blocks executed 100%
-     4000:  222:  exp(float __x)
-     4000:  223:  { return __builtin_expf(__x); }
+function _ZSt3expf called 20000 returned 100% blocks executed 100%
+    20000:  222:  exp(float __x)
+    20000:  223:  { return __builtin_expf(__x); }
         -:  224:
         -:  225:  inline _GLIBCXX_CONSTEXPR long double
         -:  226:  exp(long double __x)
@@ -417,11 +417,11 @@ function _ZSt3expf called 4000 returned 100% blocks executed 100%
         -:  412:  template<typename _Tp, typename _Up>
         -:  413:    inline _GLIBCXX_CONSTEXPR
         -:  414:    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
-function _ZSt3powIfiEN9__gnu_cxx11__promote_2IDTplcvNS1_IT_XsrSt12__is_integerIS2_E7__valueEE6__typeELi0EcvNS1_IT0_XsrS3_IS7_E7__valueEE6__typeELi0EEXsrS3_ISB_E7__valueEE6__typeES2_S7_ called 2000 returned 100% blocks executed 100%
-     2000:  415:    pow(_Tp __x, _Up __y)
+function _ZSt3powIfiEN9__gnu_cxx11__promote_2IT_T0_NS0_9__promoteIS2_XsrSt12__is_integerIS2_E7__valueEE6__typeENS4_IS3_XsrS5_IS3_E7__valueEE6__typeEE6__typeES2_S3_ called 10000 returned 100% blocks executed 100%
+    10000:  415:    pow(_Tp __x, _Up __y)
         -:  416:    {
         -:  417:      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
-     2000:  418:      return pow(__type(__x), __type(__y));
+    10000:  418:      return pow(__type(__x), __type(__y));
         -:  419:    }
         -:  420:
         -:  421:  using ::sin;
@@ -1850,10 +1850,10 @@ function _ZSt3powIfiEN9__gnu_cxx11__promote_2IDTplcvNS1_IT_XsrSt12__is_integerIS
         -: 1844:#endif // _GLIBCXX_USE_C99_MATH_TR1
         -: 1845:#endif // C++11
         -: 1846:
-        -: 1847:#if __cplusplus >= 201703L
+        -: 1847:#if __cplusplus > 201402L
         -: 1848:
         -: 1849:  // [c.math.hypot3], three-dimensional hypotenuse
-        -: 1850:#define __cpp_lib_hypot 201603L
+        -: 1850:#define __cpp_lib_hypot 201603
         -: 1851:
         -: 1852:  template<typename _Tp>
         -: 1853:    inline _Tp
@@ -1883,15 +1883,15 @@ function _ZSt3powIfiEN9__gnu_cxx11__promote_2IDTplcvNS1_IT_XsrSt12__is_integerIS
         -: 1877:  { return std::__hypot3<long double>(__x, __y, __z); }
         -: 1878:
         -: 1879:  template<typename _Tp, typename _Up, typename _Vp>
-        -: 1880:    __gnu_cxx::__promoted_t<_Tp, _Up, _Vp>
+        -: 1880:    typename __gnu_cxx::__promote_3<_Tp, _Up, _Vp>::__type
         -: 1881:    hypot(_Tp __x, _Up __y, _Vp __z)
         -: 1882:    {
-        -: 1883:      using __type = __gnu_cxx::__promoted_t<_Tp, _Up, _Vp>;
+        -: 1883:      using __type = typename __gnu_cxx::__promote_3<_Tp, _Up, _Vp>::__type;
         -: 1884:      return std::__hypot3<__type>(__x, __y, __z);
         -: 1885:    }
         -: 1886:#endif // C++17
         -: 1887:
-        -: 1888:#if __cplusplus >= 202002L
+        -: 1888:#if __cplusplus > 201703L
         -: 1889:  // linear interpolation
         -: 1890:# define __cpp_lib_interpolate 201902L
         -: 1891:
@@ -1899,7 +1899,7 @@ function _ZSt3powIfiEN9__gnu_cxx11__promote_2IDTplcvNS1_IT_XsrSt12__is_integerIS
         -: 1893:    constexpr _Fp
         -: 1894:    __lerp(_Fp __a, _Fp __b, _Fp __t) noexcept
         -: 1895:    {
-        -: 1896:      if ((__a <= 0 && __b >= 0) || (__a >= 0 && __b <= 0))
+        -: 1896:      if (__a <= 0 && __b >= 0 || __a >= 0 && __b <= 0)
         -: 1897:	return __t * __b + (1 - __t) * __a;
         -: 1898:
         -: 1899:      if (__t == 1)
@@ -1908,7 +1908,7 @@ function _ZSt3powIfiEN9__gnu_cxx11__promote_2IDTplcvNS1_IT_XsrSt12__is_integerIS
         -: 1902:      // Exact at __t=0, monotonic except near __t=1,
         -: 1903:      // bounded, determinate, and consistent:
         -: 1904:      const _Fp __x = __a + __t * (__b - __a);
-        -: 1905:      return (__t > 1) == (__b > __a)
+        -: 1905:      return __t > 1 == __b > __a
         -: 1906:	? (__b < __x ? __x : __b)
         -: 1907:	: (__b > __x ? __x : __b);  // monotonic near __t=1
         -: 1908:    }
@@ -1924,23 +1924,15 @@ function _ZSt3powIfiEN9__gnu_cxx11__promote_2IDTplcvNS1_IT_XsrSt12__is_integerIS
         -: 1918:  constexpr long double
         -: 1919:  lerp(long double __a, long double __b, long double __t) noexcept
         -: 1920:  { return std::__lerp(__a, __b, __t); }
-        -: 1921:
-        -: 1922:  template<typename _Tp, typename _Up, typename _Vp>
-        -: 1923:    constexpr __gnu_cxx::__promoted_t<_Tp, _Up, _Vp>
-        -: 1924:    lerp(_Tp __x, _Up __y, _Vp __z) noexcept
-        -: 1925:    {
-        -: 1926:      using __type = __gnu_cxx::__promoted_t<_Tp, _Up, _Vp>;
-        -: 1927:      return std::__lerp<__type>(__x, __y, __z);
-        -: 1928:    }
-        -: 1929:#endif // C++20
-        -: 1930:
-        -: 1931:_GLIBCXX_END_NAMESPACE_VERSION
-        -: 1932:} // namespace
-        -: 1933:
-        -: 1934:#if _GLIBCXX_USE_STD_SPEC_FUNCS
-        -: 1935:#  include <bits/specfun.h>
-        -: 1936:#endif
-        -: 1937:
-        -: 1938:} // extern "C++"
-        -: 1939:
-        -: 1940:#endif
+        -: 1921:#endif // C++20
+        -: 1922:
+        -: 1923:_GLIBCXX_END_NAMESPACE_VERSION
+        -: 1924:} // namespace
+        -: 1925:
+        -: 1926:#if _GLIBCXX_USE_STD_SPEC_FUNCS
+        -: 1927:#  include <bits/specfun.h>
+        -: 1928:#endif
+        -: 1929:
+        -: 1930:} // extern "C++"
+        -: 1931:
+        -: 1932:#endif
