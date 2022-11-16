@@ -100,9 +100,9 @@ void play() {
     glClearColor(0.8, 0.8, 0.8, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // grass();
-    // road();
-    // mountains();
+    grass();
+    road();
+    mountains();
     tree(0.5, 10, 200);
     tree(1, 100, 200);
     tree(1.5, 250, 200);
